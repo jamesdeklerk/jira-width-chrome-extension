@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Jira Board Width Updater (Beta)",
+  "description": "Addresses the problem of Jira board item summaries being cut off on larger screens, despite the availability of extra space.",
   "version": "0.1",
   "content_scripts": [
     {
