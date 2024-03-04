@@ -1,20 +1,17 @@
 // Select the node that will be observed for mutations
 var targetNode = document.body; // You can choose a more specific parent element if it's available
+const elementSelector = 'button[data-testid="platform-board-kit.ui.swimlane.link-button"]';
 
 // Options for the observer (which mutations to observe)
 var config = { childList: true, subtree: true };
 
 // Callback function to execute when mutations are observed
 var callback = function(mutationsList, observer) {
-    // Use traditional 'for loops' for IE 11
-    for(var mutation of mutationsList) {
+    for (const mutation of mutationsList) {
         if (mutation.type === 'childList') {
-            var foundElements = document.querySelectorAll('button[data-testid="platform-board-kit.ui.swimlane.link-button"]');
+            const foundElements = document.querySelectorAll(elementSelector);
             if (foundElements.length > 0) {
                 applyStyles();
-                // Optionally: Stop observing after the first match
-                observer.disconnect();
-                break;
             }
         }
     }
@@ -27,7 +24,7 @@ var observer = new MutationObserver(callback);
 observer.observe(targetNode, config);
 
 function applyStyles() {
-  var elements = document.querySelectorAll('button[data-testid="platform-board-kit.ui.swimlane.link-button"]');
+  var elements = document.querySelectorAll(elementSelector);
   elements.forEach(function(element) {
       element.style.maxWidth = 'none';
   });
