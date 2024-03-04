@@ -1,9 +1,6 @@
 // Select the node that will be observed for mutations
-var targetNode = document.body; // You can choose a more specific parent element if it's available
+var targetNode = document.body;
 const elementSelector = 'button[data-testid="platform-board-kit.ui.swimlane.link-button"]';
-
-// Options for the observer (which mutations to observe)
-var config = { childList: true, subtree: true };
 
 // Callback function to execute when mutations are observed
 var callback = function(mutationsList, observer) {
@@ -17,10 +14,10 @@ var callback = function(mutationsList, observer) {
     }
 };
 
-// Create an observer instance linked to the callback function
 var observer = new MutationObserver(callback);
 
 // Start observing the target node for configured mutations
+var config = { childList: true, subtree: true };
 observer.observe(targetNode, config);
 
 function applyStyles() {
